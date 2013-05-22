@@ -43,7 +43,7 @@ class Chef
         validate!      
         connection.servers.all.each do |server|
           name = server.tags["Name"].to_s
-          next unless name
+          next unless name and server.dns_name
           puts "host #{name}"
           puts "   hostname #{server.dns_name}"
         end
